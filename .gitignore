@@ -24,3 +24,6 @@ dist-ssr
 
 */bin
 */obj
+
+// database
+*/shop.db
