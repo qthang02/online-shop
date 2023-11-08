@@ -22,7 +22,7 @@ const Nav = ({ handleInputChange, query }) => {
       </div>
 
       <div className="profile-container">
-        <Link to={``}>
+        <Link to={`/favorite`}>
           <FiHeart className="nav-icons" />
         </Link>
 
@@ -30,9 +30,13 @@ const Nav = ({ handleInputChange, query }) => {
           <AiOutlineShoppingCart className="nav-icons" />
         </Link>
 
-        <Link to={`/login`}>
+        <span class="dropdown">
           <AiOutlineUserAdd className="nav-icons" />
-        </Link>
+          <div class="dropdown-content">
+            <Link to={`/login`}>Login</Link>
+            <Link to={`/register`}>Register</Link>
+          </div>
+        </span>
       </div>
     </nav>
   );
