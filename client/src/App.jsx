@@ -1,9 +1,10 @@
 import './App.css'
+import Navigation from './Navigation/Nav'
 
 function App() {
   return (
     <>
-      Hello World
+      <Navigation />
     </>
   )
 }
