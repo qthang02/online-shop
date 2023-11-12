@@ -3,7 +3,8 @@ import "./Register.css";
 
 const Register = () => {
 
-    const jwtToken = useAuthStore((state) => state.jwtToken);
+    // get token from useAuthStore
+    const jwtToken = useAuthStore(state => state.jwtToken);
 
     console.log('JWT Token:', jwtToken);
 

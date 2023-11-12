@@ -1,18 +1,10 @@
 import { create } from 'zustand'
 
-const useAuthStore = create((set) => ({
+const useAuthStore = create((set, get) => ({
   jwtToken: null,
-
-  actions: {
-    setToken: (token) =>
-      set((state) => ({
-        jwtToken: token,
-      })),
-    clearToken: () =>
-      set((state) => ({
-        jwtToken: null,
-      })),
-  },
+  setJwtToken: (token) => set({ jwtToken: token }),
+  clearJwtToken: () => set({ jwtToken: null }),
+  getToken: () => get().jwtToken,
 }));
 
 export default useAuthStore;

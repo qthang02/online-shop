@@ -18,7 +18,10 @@ const Login = () => {
       if (response && response.data && response.data.token) {
         const jwtToken = response.data.token;
 
-        useAuthStore.setState({ jwtToken: jwtToken })
+        // store in useAuthStore
+        useAuthStore.setState({
+          jwtToken
+        });
 
         console.log('Đăng nhập thành công!', jwtToken);
       }
