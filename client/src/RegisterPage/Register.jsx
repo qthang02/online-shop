@@ -1,6 +1,12 @@
+import useAuthStore from "../Store/AuthStore";
 import "./Register.css";
 
 const Register = () => {
+
+    const jwtToken = useAuthStore((state) => state.jwtToken);
+
+    console.log('JWT Token:', jwtToken);
+
     return (
         <div className="container">
             <div className="register">

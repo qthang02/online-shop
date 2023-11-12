@@ -7,6 +7,7 @@ import Recommended from "./Recommended/Recommended";
 import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
 import "./index.css";
+import useAuthStore from "./Store/AuthStore";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -51,6 +52,7 @@ function App() {
           title === selected
       );
     }
+
 
     return filteredProducts.map(
       ({ img, title, star, reviews, prevPrice, newPrice }) => (
