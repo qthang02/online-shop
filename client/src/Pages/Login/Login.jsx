@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import "./Login.css";
-import useAuthStore from "../Store/AuthStore";
+import Nav from "../../components/Navigation/Nav";
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -14,16 +14,15 @@ const Login = () => {
         password
       });
 
-      console.log('Đăng nhập thành công!', response.data);
       if (response && response.data && response.data.token) {
         const jwtToken = response.data.token;
 
-        // store in useAuthStore
-        useAuthStore.setState({
-          jwtToken
-        });
+        const isAdmin = response.data.email === 'admin@test.com';
 
-        console.log('Đăng nhập thành công!', jwtToken);
+        localStorage.setItem('isAdmin', isAdmin);
+        localStorage.setItem('jwtToken', jwtToken);
+
+        window.location.href = '/';
       }
 
     } catch (error) {
@@ -32,7 +31,9 @@ const Login = () => {
   };
 
     return (
-        <div className="container">
+        <>
+          <Nav />
+          <div className="container">
             <div className="login">
                 <div className="login-title">
                     <span className="title">
@@ -66,6 +67,7 @@ const Login = () => {
             
             </div>
         </div>
+        </>
     )
 }
 

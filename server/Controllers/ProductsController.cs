@@ -61,20 +61,20 @@ public class ProductsController : BaseApiController
 
     [Authorize(Roles = "Admin")]
     [HttpPost]
-    public async Task<ActionResult<Product>> CreateProduct([FromForm] CreateProductDto productDto)
+    public async Task<ActionResult<Product>> CreateProduct([FromBody] CreateProductDto productDto)
     {
         var product = _mapper.Map<Product>(productDto);
 
-        if (productDto.File != null)
-        {
-            var imageResult = await _imageService.AddImageAsync(productDto.File);
+        // if (productDto.File != null)
+        // {
+        //     var imageResult = await _imageService.AddImageAsync(productDto.File);
 
-            if (imageResult.Error != null)
-                return BadRequest(new ProblemDetails { Title = imageResult.Error.Message });
+        //     if (imageResult.Error != null)
+        //         return BadRequest(new ProblemDetails { Title = imageResult.Error.Message });
 
-            product.PictureUrl = imageResult.SecureUrl.ToString();
-            product.PublicId = imageResult.PublicId;
-        }
+        //     product.PictureUrl = imageResult.SecureUrl.ToString();
+        //     product.PublicId = imageResult.PublicId;
+        // }
 
         _context.Products.Add(product);
 
@@ -87,7 +87,7 @@ public class ProductsController : BaseApiController
 
     [Authorize(Roles = "Admin")]
     [HttpPut]
-    public async Task<ActionResult<Product>> UpdateProduct([FromForm] UpdateProductDto productDto)
+    public async Task<ActionResult<Product>> UpdateProduct([FromBody] UpdateProductDto productDto)
     {
         var product = await _context.Products.FindAsync(productDto.Id);
 

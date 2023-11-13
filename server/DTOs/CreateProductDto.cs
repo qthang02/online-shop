@@ -15,7 +15,7 @@ namespace DTOs
         public long Price { get; set; }
 
         [Required]
-        public IFormFile File { get; set; }
+        public string PictureUrl { get; set; }
 
         [Required]
         public string Type { get; set; }

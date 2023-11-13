@@ -9,8 +9,10 @@ import './index.css'
 import ErrorPage from './Pages/Errors/error-page.jsx';
 import { ChakraProvider } from '@chakra-ui/react'
 import { CartPage } from './Pages/cart/CartPage.jsx';
-import Nav from './components/Navigation/Nav.jsx';
-
+import ProductDetailPage from './Pages/ProductDetail/ProductDetailPage.jsx';
+import Login from './Pages/Login/Login.jsx';
+import Register from './Pages/Register/Register.jsx';
+import ProductManagePage from './Pages/Admin/ProductManage/ProductManagePage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,26 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <CartPage />,
   },
+  {
+    path: "/product",
+    element: <ProductDetailPage />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/admin/product-manage",
+    element: <ProductManagePage />,
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
